@@ -15,7 +15,7 @@ export default function Home() {
             <div className="h-14" />
 
             {/* Hero Banner */}
-            <section className="hero-gradient mx-3 mt-3 rounded-3xl p-6 text-white relative overflow-hidden animate-fade-in">
+            <section className="hero-gradient mx-3 mt-3 rounded-3xl p-6 relative overflow-hidden animate-fade-in" style={{ color: 'var(--text-primary)' }}>
                 {/* Floating orbs */}
                 <div
                     className="floating-orb w-32 h-32 -top-8 -right-8"
@@ -36,7 +36,7 @@ export default function Home() {
                 <h1 className="text-[26px] font-extrabold leading-tight mb-1 relative z-10">
                     New iPhone 15<br />Pro Max
                 </h1>
-                <p className="text-sm text-white/40 mb-5 max-w-[220px] relative z-10">
+                <p className="text-sm mb-5 max-w-[220px] relative z-10" style={{ color: 'var(--text-secondary)' }}>
                     Titanium design. A17 Pro chip. The most powerful iPhone ever.
                 </p>
                 <Link

@@ -6,7 +6,7 @@ import { useState } from 'react'
 
 export default function Navbar() {
     const { cartCount } = useCart()
-    const { theme, toggleTheme } = useTheme()
+    const { theme, cycleTheme, THEME_LABELS } = useTheme()
     const [searchOpen, setSearchOpen] = useState(false)
 
     return (
@@ -14,10 +14,10 @@ export default function Navbar() {
             <div className="flex items-center justify-between px-4 h-14">
                 {/* Left — theme toggle */}
                 <button
-                    onClick={toggleTheme}
+                    onClick={cycleTheme}
                     className="p-2 -ml-2 rounded-xl transition-all active:scale-90"
                     style={{ color: 'var(--color-accent)' }}
-                    title={theme === 'cosmic' ? 'Switch to Ocean Sunset' : 'Switch to Cosmic Purple'}
+                    title={`Theme: ${THEME_LABELS[theme]}`}
                 >
                     <Palette size={22} strokeWidth={1.8} />
                 </button>
