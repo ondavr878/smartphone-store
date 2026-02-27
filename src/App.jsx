@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import { CartProvider } from './CartContext'
 import { FavoritesProvider } from './FavoritesContext'
 import BottomNav from './components/BottomNav'
@@ -14,7 +14,7 @@ export default function App() {
     return (
         <CartProvider>
             <FavoritesProvider>
-                <BrowserRouter>
+                <HashRouter>
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/product/:id" element={<ProductDetail />} />
@@ -25,7 +25,7 @@ export default function App() {
                         <Route path="/profile" element={<Profile />} />
                     </Routes>
                     <BottomNav />
-                </BrowserRouter>
+                </HashRouter>
             </FavoritesProvider>
         </CartProvider>
     )

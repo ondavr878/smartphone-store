@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A1000001 /* PhoneVaultApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001; };
-		A1000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000002; };
-		A1000003 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000003; };
-		A1000004 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2000004; };
-		A1000005 /* WebApp in Resources */ = {isa = PBXBuildFile; fileRef = A2000005; };
+		A1000001 /* PhoneVaultApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001 /* PhoneVaultApp.swift */; };
+		A1000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000002 /* ContentView.swift */; };
+		A1000003 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000003 /* WebView.swift */; };
+		A1000004 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2000004 /* Assets.xcassets */; };
+		A1000005 /* WebApp in Resources */ = {isa = PBXBuildFile; fileRef = A2000005 /* WebApp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,7 +67,7 @@
 /* Begin PBXNativeTarget section */
 		A5000001 /* PhoneVault */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A7000003;
+			buildConfigurationList = A7000003 /* Build configuration list for PBXNativeTarget "PhoneVault" */;
 			buildPhases = (
 				A6000001 /* Sources */,
 				A3000001 /* Frameworks */,
@@ -79,7 +79,7 @@
 			);
 			name = PhoneVault;
 			productName = PhoneVault;
-			productReference = A2000010;
+			productReference = A2000010 /* PhoneVault.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -97,7 +97,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A7000001;
+			buildConfigurationList = A7000001 /* Build configuration list for PBXProject "PhoneVault" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -106,7 +106,7 @@
 				Base,
 			);
 			mainGroup = A4000001;
-			productRefGroup = A4000003;
+			productRefGroup = A4000003 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -199,7 +199,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 39482WDT6F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = PhoneVault;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -229,7 +229,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 39482WDT6F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = PhoneVault;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -255,7 +255,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A7000001 /* Build configuration list for PBXProject */ = {
+		A7000001 /* Build configuration list for PBXProject "PhoneVault" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A9000001 /* Debug */,
@@ -264,7 +264,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A7000003 /* Build configuration list for PBXNativeTarget */ = {
+		A7000003 /* Build configuration list for PBXNativeTarget "PhoneVault" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A9000003 /* Debug */,
@@ -274,7 +274,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
 	};
 	rootObject = A8000001 /* Project object */;
 }
