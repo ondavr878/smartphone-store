@@ -106,7 +106,7 @@ struct SplashView: View {
 
                 // App name
                 VStack(spacing: 8) {
-                    Text("PhoneVault")
+                    Text("TelOL")
                         .font(.system(size: 36, weight: .bold, design: .rounded))
                         .foregroundStyle(
                             LinearGradient(
