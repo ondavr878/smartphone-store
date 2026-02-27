@@ -3,6 +3,8 @@ import WebKit
 
 struct WebView: UIViewRepresentable {
     
+    let url = "https://ondavr878.github.io/smartphone-store/"
+    
     func makeUIView(context: Context) -> WKWebView {
         let preferences = WKWebpagePreferences()
         preferences.allowsContentJavaScript = true
@@ -18,6 +20,7 @@ struct WebView: UIViewRepresentable {
         webView.scrollView.bounces = true
         webView.scrollView.contentInsetAdjustmentBehavior = .never
         webView.navigationDelegate = context.coordinator
+        webView.allowsBackForwardNavigationGestures = true
         
         // Disable zoom
         let source = """
@@ -29,9 +32,9 @@ struct WebView: UIViewRepresentable {
         let script = WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
         webView.configuration.userContentController.addUserScript(script)
         
-        // Load local HTML
-        if let indexURL = Bundle.main.url(forResource: "index", withExtension: "html", subdirectory: "WebApp") {
-            webView.loadFileURL(indexURL, allowingReadAccessTo: indexURL.deletingLastPathComponent())
+        // Load GitHub Pages URL
+        if let pageURL = URL(string: url) {
+            webView.load(URLRequest(url: pageURL))
         }
         
         return webView
@@ -45,7 +48,6 @@ struct WebView: UIViewRepresentable {
     
     class Coordinator: NSObject, WKNavigationDelegate {
         func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-            // Allow all navigation within the app
             decisionHandler(.allow)
         }
     }
