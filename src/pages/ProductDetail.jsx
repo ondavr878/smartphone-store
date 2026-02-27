@@ -46,8 +46,8 @@ export default function ProductDetail() {
                 <button
                     onClick={() => toggleFavorite(product.id)}
                     className={`p-2 -mr-2 rounded-xl transition-colors ${isFavorite(product.id)
-                            ? 'text-danger'
-                            : 'text-muted hover:text-danger'
+                        ? 'text-danger'
+                        : 'text-muted hover:text-danger'
                         }`}
                 >
                     <Heart
@@ -81,12 +81,14 @@ export default function ProductDetail() {
                             <Star
                                 key={i}
                                 size={14}
-                                fill={i < 4 ? '#FFB800' : 'none'}
-                                stroke={i < 4 ? '#FFB800' : '#d1d5db'}
+                                fill={i < Math.round(product.rating || 4) ? '#FFB800' : 'none'}
+                                stroke={i < Math.round(product.rating || 4) ? '#FFB800' : '#d1d5db'}
                                 strokeWidth={1.5}
                             />
                         ))}
-                        <span className="text-xs text-muted ml-1">4.0 (2.3k reviews)</span>
+                        <span className="text-xs text-muted ml-1">
+                            {product.rating || '4.0'} ({product.reviews ? (product.reviews / 1000).toFixed(1) + 'k' : '2.3k'} reviews)
+                        </span>
                     </div>
                 </div>
 
