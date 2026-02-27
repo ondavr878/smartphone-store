@@ -6,6 +6,9 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
+            Color(red: 10/255, green: 10/255, blue: 26/255)
+                .ignoresSafeArea()
+                
             if hasCompletedOnboarding {
                 WebView()
                     .ignoresSafeArea(.all, edges: .bottom)
