@@ -2,7 +2,7 @@ const phones = [
     // ── Apple ──
     {
         id: 1,
-        name: 'iPhone 15 Pro Max',
+        name: 'iPhone 17 Pro Max',
         brand: 'Apple',
         price: 1199,
         image: 'https://placehold.co/400x400/1a1a2e/ffffff?text=iPhone+15+Pro',
