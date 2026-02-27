@@ -20,8 +20,8 @@ struct WebView: UIViewRepresentable {
         webView.scrollView.bounces = true
         webView.scrollView.contentInsetAdjustmentBehavior = .never
         webView.navigationDelegate = context.coordinator
-        webView.allowsBackForwardNavigationGestures = true
-        
+        webView.allowsBackForwardNavigationGestures = false
+
         // Disable zoom
         let source = """
         var meta = document.createElement('meta');

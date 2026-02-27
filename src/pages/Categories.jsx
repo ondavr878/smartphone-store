@@ -6,15 +6,15 @@ import phones from '../data'
 const brands = [...new Set(phones.map((p) => p.brand))]
 
 const brandMeta = {
-    Apple: { gradient: 'from-gray-900 to-gray-700', emoji: '🍎' },
-    Samsung: { gradient: 'from-blue-900 to-blue-700', emoji: '📱' },
-    Google: { gradient: 'from-green-800 to-green-600', emoji: '🔍' },
-    OnePlus: { gradient: 'from-red-900 to-red-700', emoji: '⚡' },
-    Xiaomi: { gradient: 'from-orange-800 to-orange-600', emoji: '🔥' },
-    Sony: { gradient: 'from-indigo-900 to-indigo-700', emoji: '🎮' },
-    Nothing: { gradient: 'from-slate-800 to-slate-600', emoji: '⚪' },
-    Motorola: { gradient: 'from-cyan-800 to-cyan-600', emoji: '🛡️' },
-    ASUS: { gradient: 'from-rose-900 to-rose-700', emoji: '🎯' },
+    Apple: { gradient: 'linear-gradient(135deg, #374151, #1f2937)', emoji: '🍎' },
+    Samsung: { gradient: 'linear-gradient(135deg, #1e3a5f, #1e40af)', emoji: '📱' },
+    Google: { gradient: 'linear-gradient(135deg, #14532d, #166534)', emoji: '🔍' },
+    OnePlus: { gradient: 'linear-gradient(135deg, #7f1d1d, #dc2626)', emoji: '⚡' },
+    Xiaomi: { gradient: 'linear-gradient(135deg, #7c2d12, #ea580c)', emoji: '🔥' },
+    Sony: { gradient: 'linear-gradient(135deg, #312e81, #4338ca)', emoji: '🎮' },
+    Nothing: { gradient: 'linear-gradient(135deg, #334155, #475569)', emoji: '⚪' },
+    Motorola: { gradient: 'linear-gradient(135deg, #164e63, #0891b2)', emoji: '🛡️' },
+    ASUS: { gradient: 'linear-gradient(135deg, #881337, #e11d48)', emoji: '🎯' },
 }
 
 const priceRanges = [
@@ -25,11 +25,11 @@ const priceRanges = [
 ]
 
 const topSpecs = [
-    { label: 'Best Camera', value: 'Pixel 9 Pro', icon: Camera, color: 'text-emerald-500' },
-    { label: 'Best Battery', value: 'OnePlus 12', icon: Battery, color: 'text-amber-500' },
-    { label: 'Best Display', value: 'Galaxy S24', icon: Monitor, color: 'text-blue-500' },
-    { label: 'Best Gaming', value: 'ROG Phone 8', icon: Zap, color: 'text-red-500' },
-    { label: 'Best Value', value: 'Pixel 8a', icon: Crown, color: 'text-purple-500' },
+    { label: 'Best Camera', value: 'Pixel 9 Pro', icon: Camera, color: '#34d399' },
+    { label: 'Best Battery', value: 'OnePlus 12', icon: Battery, color: '#fbbf24' },
+    { label: 'Best Display', value: 'Galaxy S24', icon: Monitor, color: '#60a5fa' },
+    { label: 'Best Gaming', value: 'ROG Phone 8', icon: Zap, color: '#f87171' },
+    { label: 'Best Value', value: 'Pixel 8a', icon: Crown, color: '#a78bfa' },
 ]
 
 export default function Categories() {
@@ -39,21 +39,21 @@ export default function Categories() {
             <div className="h-14" />
 
             <div className="px-4 pt-4 pb-3">
-                <h1 className="text-xl font-bold">Categories</h1>
-                <p className="text-sm text-muted mt-0.5">
+                <h1 className="text-xl font-bold" style={{ color: 'var(--text-primary)' }}>Categories</h1>
+                <p className="text-sm mt-0.5" style={{ color: 'var(--text-muted)' }}>
                     {brands.length} brands • {phones.length} devices
                 </p>
             </div>
 
             {/* Brands */}
             <div className="px-4 mb-6">
-                <h2 className="text-xs font-semibold text-muted uppercase tracking-wide mb-3">
+                <h2 className="text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: 'var(--text-muted)' }}>
                     Brands
                 </h2>
                 <div className="grid grid-cols-3 gap-2">
                     {brands.map((brand, i) => {
                         const meta = brandMeta[brand] || {
-                            gradient: 'from-gray-800 to-gray-600',
+                            gradient: 'linear-gradient(135deg, #374151, #1f2937)',
                             emoji: '📱',
                         }
                         const count = phones.filter((p) => p.brand === brand).length
@@ -61,8 +61,12 @@ export default function Categories() {
                             <Link
                                 key={brand}
                                 to={`/?brand=${brand}`}
-                                className={`relative bg-gradient-to-br ${meta.gradient} rounded-2xl p-3 text-white overflow-hidden group hover:shadow-lg hover:-translate-y-0.5 active:scale-[0.97] transition-all animate-slide-up`}
-                                style={{ animationDelay: `${i * 40}ms` }}
+                                className="relative rounded-2xl p-3 text-white overflow-hidden group active:scale-[0.97] transition-all animate-slide-up neon-glow"
+                                style={{
+                                    background: meta.gradient,
+                                    animationDelay: `${i * 40}ms`,
+                                    border: '1px solid rgba(255,255,255,0.08)',
+                                }}
                             >
                                 <div className="absolute top-1.5 right-1.5 text-lg opacity-30 group-hover:opacity-50 transition-opacity">
                                     {meta.emoji}
@@ -79,7 +83,7 @@ export default function Categories() {
 
             {/* Price Ranges */}
             <div className="px-4 mb-6">
-                <h2 className="text-xs font-semibold text-muted uppercase tracking-wide mb-3">
+                <h2 className="text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: 'var(--text-muted)' }}>
                     By Price
                 </h2>
                 <div className="space-y-2">
@@ -90,21 +94,24 @@ export default function Categories() {
                         return (
                             <div
                                 key={range.label}
-                                className="flex items-center justify-between bg-surface rounded-2xl px-4 py-3 hover:bg-gray-100 active:scale-[0.98] transition-all cursor-pointer animate-slide-up"
+                                className="flex items-center justify-between rounded-2xl px-4 py-3 cursor-pointer animate-slide-up dark-card"
                                 style={{ animationDelay: `${i * 50 + 300}ms` }}
                             >
                                 <div className="flex items-center gap-3">
-                                    <div className="w-9 h-9 rounded-xl bg-white flex items-center justify-center">
-                                        <Smartphone size={16} strokeWidth={1.8} className="text-primary" />
+                                    <div
+                                        className="w-9 h-9 rounded-xl flex items-center justify-center"
+                                        style={{ background: 'var(--gradient-primary)' }}
+                                    >
+                                        <Smartphone size={16} strokeWidth={1.8} className="text-white" />
                                     </div>
                                     <div>
-                                        <p className="text-sm font-semibold">{range.label}</p>
-                                        <p className="text-[11px] text-muted">
+                                        <p className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>{range.label}</p>
+                                        <p className="text-[11px]" style={{ color: 'var(--text-muted)' }}>
                                             {count} phone{count !== 1 ? 's' : ''}
                                         </p>
                                     </div>
                                 </div>
-                                <ChevronRight size={16} className="text-muted" />
+                                <ChevronRight size={16} style={{ color: 'var(--text-muted)' }} />
                             </div>
                         )
                     })}
@@ -113,7 +120,7 @@ export default function Categories() {
 
             {/* Top Specs */}
             <div className="px-4">
-                <h2 className="text-xs font-semibold text-muted uppercase tracking-wide mb-3">
+                <h2 className="text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: 'var(--text-muted)' }}>
                     Awards
                 </h2>
                 <div className="space-y-2">
@@ -122,17 +129,20 @@ export default function Categories() {
                         return (
                             <div
                                 key={item.label}
-                                className="flex items-center gap-3 bg-surface rounded-2xl px-4 py-3 animate-slide-up"
+                                className="flex items-center gap-3 rounded-2xl px-4 py-3 animate-slide-up dark-card"
                                 style={{ animationDelay: `${i * 50 + 500}ms` }}
                             >
-                                <div className="w-9 h-9 rounded-xl bg-white flex items-center justify-center">
-                                    <Icon size={16} strokeWidth={1.8} className={item.color} />
+                                <div
+                                    className="w-9 h-9 rounded-xl flex items-center justify-center"
+                                    style={{ background: 'var(--bg-surface-hover)' }}
+                                >
+                                    <Icon size={16} strokeWidth={1.8} style={{ color: item.color }} />
                                 </div>
                                 <div className="flex-1">
-                                    <p className="text-sm font-semibold">{item.value}</p>
-                                    <p className="text-[11px] text-muted">{item.label}</p>
+                                    <p className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>{item.value}</p>
+                                    <p className="text-[11px]" style={{ color: 'var(--text-muted)' }}>{item.label}</p>
                                 </div>
-                                <ChevronRight size={16} className="text-muted" />
+                                <ChevronRight size={16} style={{ color: 'var(--text-muted)' }} />
                             </div>
                         )
                     })}

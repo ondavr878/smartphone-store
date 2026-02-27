@@ -22,7 +22,10 @@ export default function BottomNav() {
     if (hiddenPaths.includes(location.pathname) || isProductPage) return null
 
     return (
-        <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[480px] z-50 glass border-t border-border/60 pb-[env(safe-area-inset-bottom)]">
+        <nav
+            className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[480px] z-50 glass-dark border-t pb-[env(safe-area-inset-bottom)]"
+            style={{ borderColor: 'var(--nav-border)' }}
+        >
             <div className="flex items-center justify-around h-16">
                 {tabs.map(({ path, icon: Icon, label }) => {
                     const isActive =
@@ -37,31 +40,35 @@ export default function BottomNav() {
                         <Link
                             key={path}
                             to={path}
-                            className={`flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-xl transition-all ${isActive
-                                    ? 'text-primary'
-                                    : 'text-muted hover:text-surface-dark'
-                                }`}
+                            className="flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-xl transition-all relative"
+                            style={{
+                                color: isActive ? 'var(--nav-active)' : 'var(--text-muted)',
+                            }}
                         >
                             <div className="relative">
                                 <Icon
                                     size={22}
                                     strokeWidth={isActive ? 2.2 : 1.6}
-                                    fill={isActive && label === 'Heart' ? 'currentColor' : 'none'}
+                                    fill={isActive && label === 'Favorites' ? 'currentColor' : 'none'}
                                 />
                                 {badge > 0 && (
-                                    <span className="absolute -top-1.5 -right-2 flex items-center justify-center min-w-[16px] h-[16px] rounded-full bg-primary text-white text-[9px] font-bold leading-none px-1 animate-scale-in">
+                                    <span
+                                        className="absolute -top-1.5 -right-2 flex items-center justify-center min-w-[16px] h-[16px] rounded-full text-white text-[9px] font-bold leading-none px-1 animate-scale-in"
+                                        style={{ background: 'var(--gradient-primary)' }}
+                                    >
                                         {badge}
                                     </span>
                                 )}
                             </div>
                             <span
-                                className={`text-[10px] leading-tight ${isActive ? 'font-semibold' : 'font-medium'
-                                    }`}
+                                className={`text-[10px] leading-tight ${isActive ? 'font-semibold' : 'font-medium'}`}
                             >
                                 {label}
                             </span>
                             {isActive && (
-                                <div className="absolute -bottom-0 w-5 h-0.5 rounded-full bg-primary" />
+                                <div
+                                    className="absolute -bottom-0 w-5 h-0.5 rounded-full active-dot"
+                                />
                             )}
                         </Link>
                     )

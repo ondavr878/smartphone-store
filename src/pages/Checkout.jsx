@@ -38,21 +38,30 @@ export default function Checkout() {
     if (placed) {
         return (
             <div className="flex flex-col items-center justify-center min-h-screen px-6 animate-scale-in">
-                <div className="w-20 h-20 rounded-full bg-success/10 flex items-center justify-center mb-5">
+                <div
+                    className="w-20 h-20 rounded-full flex items-center justify-center mb-5 animate-pulse-glow"
+                    style={{ background: 'rgba(48, 209, 88, 0.1)' }}
+                >
                     <CheckCircle size={44} strokeWidth={1.5} className="text-success" />
                 </div>
-                <h1 className="text-xl font-bold mb-1">Order Placed Successfully!</h1>
-                <p className="text-sm text-muted text-center mb-8">
+                <h1 className="text-xl font-bold mb-1" style={{ color: 'var(--text-primary)' }}>Order Placed Successfully!</h1>
+                <p className="text-sm text-center mb-8" style={{ color: 'var(--text-muted)' }}>
                     Thank you for your purchase. We'll send<br />you a confirmation shortly.
                 </p>
                 <button
                     onClick={handleReturnHome}
-                    className="px-8 py-3 rounded-2xl bg-primary text-white font-semibold text-sm shadow-lg shadow-primary/25 hover:bg-primary-dark active:scale-95 transition-all"
+                    className="px-8 py-3 rounded-2xl text-white font-semibold text-sm active:scale-95 transition-all btn-gradient"
                 >
                     Return to Home
                 </button>
             </div>
         )
+    }
+
+    const inputStyle = {
+        background: 'var(--bg-input)',
+        color: 'var(--text-primary)',
+        border: '1px solid var(--border-color)',
     }
 
     return (
@@ -61,17 +70,18 @@ export default function Checkout() {
             <div className="flex items-center px-4 h-14">
                 <button
                     onClick={() => navigate(-1)}
-                    className="p-2 -ml-2 rounded-xl hover:bg-black/5 active:bg-black/10 transition-colors"
+                    className="p-2 -ml-2 rounded-xl transition-colors"
+                    style={{ color: 'var(--text-secondary)' }}
                 >
                     <ArrowLeft size={22} strokeWidth={1.8} />
                 </button>
-                <h1 className="flex-1 text-center font-bold text-[17px] pr-8">Checkout</h1>
+                <h1 className="flex-1 text-center font-bold text-[17px] pr-8" style={{ color: 'var(--text-primary)' }}>Checkout</h1>
             </div>
 
             <form onSubmit={handleSubmit} className="px-4 space-y-6">
                 {/* Delivery Information */}
                 <div>
-                    <p className="text-xs font-semibold text-muted uppercase tracking-wide mb-3">
+                    <p className="text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: 'var(--text-muted)' }}>
                         Delivery Information
                     </p>
                     <div className="space-y-3">
@@ -82,7 +92,11 @@ export default function Checkout() {
                             placeholder="Full Name"
                             value={form.name}
                             onChange={handleChange}
-                            className="w-full h-12 rounded-2xl bg-surface px-4 text-sm outline-none placeholder:text-muted focus:ring-2 focus:ring-primary/30 transition-all"
+                            className="w-full h-12 rounded-2xl px-4 text-sm outline-none transition-all focus:ring-2"
+                            style={{
+                                ...inputStyle,
+                                '--tw-ring-color': 'var(--glow-color)',
+                            }}
                         />
                         <input
                             required
@@ -91,7 +105,11 @@ export default function Checkout() {
                             placeholder="Phone Number"
                             value={form.phone}
                             onChange={handleChange}
-                            className="w-full h-12 rounded-2xl bg-surface px-4 text-sm outline-none placeholder:text-muted focus:ring-2 focus:ring-primary/30 transition-all"
+                            className="w-full h-12 rounded-2xl px-4 text-sm outline-none transition-all focus:ring-2"
+                            style={{
+                                ...inputStyle,
+                                '--tw-ring-color': 'var(--glow-color)',
+                            }}
                         />
                         <textarea
                             required
@@ -100,22 +118,27 @@ export default function Checkout() {
                             rows={3}
                             value={form.address}
                             onChange={handleChange}
-                            className="w-full rounded-2xl bg-surface px-4 py-3 text-sm outline-none placeholder:text-muted resize-none focus:ring-2 focus:ring-primary/30 transition-all"
+                            className="w-full rounded-2xl px-4 py-3 text-sm outline-none resize-none transition-all focus:ring-2"
+                            style={{
+                                ...inputStyle,
+                                '--tw-ring-color': 'var(--glow-color)',
+                            }}
                         />
                     </div>
                 </div>
 
                 {/* Payment Method */}
                 <div>
-                    <p className="text-xs font-semibold text-muted uppercase tracking-wide mb-3">
+                    <p className="text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: 'var(--text-muted)' }}>
                         Payment Method
                     </p>
                     <div className="space-y-2">
                         <label
-                            className={`flex items-center gap-3 p-3.5 rounded-2xl cursor-pointer transition-all ${form.payment === 'card'
-                                    ? 'bg-primary/5 ring-2 ring-primary/30'
-                                    : 'bg-surface hover:bg-gray-100'
-                                }`}
+                            className="flex items-center gap-3 p-3.5 rounded-2xl cursor-pointer transition-all"
+                            style={{
+                                background: form.payment === 'card' ? 'rgba(var(--color-primary-rgb), 0.08)' : 'var(--bg-card)',
+                                border: form.payment === 'card' ? '1px solid var(--border-glow)' : '1px solid var(--border-color)',
+                            }}
                         >
                             <input
                                 type="radio"
@@ -126,34 +149,34 @@ export default function Checkout() {
                                 className="sr-only"
                             />
                             <div
-                                className={`w-10 h-10 rounded-xl flex items-center justify-center ${form.payment === 'card'
-                                        ? 'bg-primary text-white'
-                                        : 'bg-white text-muted'
-                                    }`}
+                                className="w-10 h-10 rounded-xl flex items-center justify-center"
+                                style={{
+                                    background: form.payment === 'card' ? 'var(--gradient-btn)' : 'var(--bg-surface)',
+                                    color: form.payment === 'card' ? 'white' : 'var(--text-muted)',
+                                }}
                             >
                                 <CreditCard size={20} strokeWidth={1.8} />
                             </div>
                             <div className="flex-1">
-                                <p className="text-sm font-semibold">Credit Card</p>
-                                <p className="text-xs text-muted">Visa, Mastercard, Amex</p>
+                                <p className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>Credit Card</p>
+                                <p className="text-xs" style={{ color: 'var(--text-muted)' }}>Visa, Mastercard, Amex</p>
                             </div>
                             <div
-                                className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${form.payment === 'card'
-                                        ? 'border-primary'
-                                        : 'border-gray-300'
-                                    }`}
+                                className="w-5 h-5 rounded-full border-2 flex items-center justify-center"
+                                style={{ borderColor: form.payment === 'card' ? 'var(--nav-active)' : 'var(--border-color)' }}
                             >
                                 {form.payment === 'card' && (
-                                    <div className="w-2.5 h-2.5 rounded-full bg-primary" />
+                                    <div className="w-2.5 h-2.5 rounded-full" style={{ background: 'var(--gradient-primary)' }} />
                                 )}
                             </div>
                         </label>
 
                         <label
-                            className={`flex items-center gap-3 p-3.5 rounded-2xl cursor-pointer transition-all ${form.payment === 'cash'
-                                    ? 'bg-primary/5 ring-2 ring-primary/30'
-                                    : 'bg-surface hover:bg-gray-100'
-                                }`}
+                            className="flex items-center gap-3 p-3.5 rounded-2xl cursor-pointer transition-all"
+                            style={{
+                                background: form.payment === 'cash' ? 'rgba(var(--color-primary-rgb), 0.08)' : 'var(--bg-card)',
+                                border: form.payment === 'cash' ? '1px solid var(--border-glow)' : '1px solid var(--border-color)',
+                            }}
                         >
                             <input
                                 type="radio"
@@ -164,25 +187,24 @@ export default function Checkout() {
                                 className="sr-only"
                             />
                             <div
-                                className={`w-10 h-10 rounded-xl flex items-center justify-center ${form.payment === 'cash'
-                                        ? 'bg-primary text-white'
-                                        : 'bg-white text-muted'
-                                    }`}
+                                className="w-10 h-10 rounded-xl flex items-center justify-center"
+                                style={{
+                                    background: form.payment === 'cash' ? 'var(--gradient-btn)' : 'var(--bg-surface)',
+                                    color: form.payment === 'cash' ? 'white' : 'var(--text-muted)',
+                                }}
                             >
                                 <Banknote size={20} strokeWidth={1.8} />
                             </div>
                             <div className="flex-1">
-                                <p className="text-sm font-semibold">Cash on Delivery</p>
-                                <p className="text-xs text-muted">Pay when you receive</p>
+                                <p className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>Cash on Delivery</p>
+                                <p className="text-xs" style={{ color: 'var(--text-muted)' }}>Pay when you receive</p>
                             </div>
                             <div
-                                className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${form.payment === 'cash'
-                                        ? 'border-primary'
-                                        : 'border-gray-300'
-                                    }`}
+                                className="w-5 h-5 rounded-full border-2 flex items-center justify-center"
+                                style={{ borderColor: form.payment === 'cash' ? 'var(--nav-active)' : 'var(--border-color)' }}
                             >
                                 {form.payment === 'cash' && (
-                                    <div className="w-2.5 h-2.5 rounded-full bg-primary" />
+                                    <div className="w-2.5 h-2.5 rounded-full" style={{ background: 'var(--gradient-primary)' }} />
                                 )}
                             </div>
                         </label>
@@ -190,28 +212,28 @@ export default function Checkout() {
                 </div>
 
                 {/* Order Summary */}
-                <div className="bg-surface rounded-2xl p-4 space-y-2.5">
-                    <p className="text-xs font-semibold text-muted uppercase tracking-wide mb-1">
+                <div className="rounded-2xl p-4 space-y-2.5 dark-card">
+                    <p className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: 'var(--text-muted)' }}>
                         Order Summary
                     </p>
                     {cartItems.map((item) => (
                         <div key={item.key} className="flex justify-between text-sm">
-                            <span className="truncate pr-4 text-muted">
+                            <span className="truncate pr-4" style={{ color: 'var(--text-muted)' }}>
                                 {item.name} × {item.quantity}
                             </span>
-                            <span className="font-semibold shrink-0">
+                            <span className="font-semibold shrink-0" style={{ color: 'var(--text-primary)' }}>
                                 ${(item.price * item.quantity).toLocaleString()}
                             </span>
                         </div>
                     ))}
-                    <div className="h-px bg-border" />
+                    <div className="h-px" style={{ background: 'var(--border-color)' }} />
                     <div className="flex justify-between text-sm">
-                        <span className="text-muted">Shipping</span>
-                        <span className="font-semibold">$10.00</span>
+                        <span style={{ color: 'var(--text-muted)' }}>Shipping</span>
+                        <span className="font-semibold" style={{ color: 'var(--text-primary)' }}>$10.00</span>
                     </div>
                     <div className="flex justify-between text-base">
-                        <span className="font-bold">Total</span>
-                        <span className="font-extrabold text-primary">
+                        <span className="font-bold" style={{ color: 'var(--text-primary)' }}>Total</span>
+                        <span className="font-extrabold gradient-text">
                             ${total.toLocaleString()}
                         </span>
                     </div>
@@ -220,7 +242,7 @@ export default function Checkout() {
                 {/* Submit */}
                 <button
                     type="submit"
-                    className="w-full h-13 rounded-2xl bg-primary text-white font-semibold text-[15px] shadow-lg shadow-primary/25 hover:bg-primary-dark active:scale-[0.97] transition-all"
+                    className="w-full h-13 rounded-2xl text-white font-semibold text-[15px] active:scale-[0.97] transition-all btn-gradient animate-pulse-glow"
                 >
                     Place Order
                 </button>
