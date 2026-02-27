@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+/* ── Design Tokens ── */
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  --color-primary: #0071e3;
+  --color-primary-dark: #0058b3;
+  --color-surface: #f5f5f7;
+  --color-surface-dark: #1d1d1f;
+  --color-muted: #6e6e73;
+  --color-border: #e5e5ea;
+  --color-success: #30d158;
+  --color-danger: #ff3b30;
+}
+
+/* ── Base Resets ── */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #ffffff;
+  color: var(--color-surface-dark);
+  min-height: 100dvh;
+}
+
+#root {
+  max-width: 480px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  min-height: 100dvh;
+  position: relative;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.04);
+}
+
+/* ── Utilities ── */
+.glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.35s ease-out both;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* Gradient hero */
+.hero-gradient {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+}
